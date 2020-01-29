@@ -1,0 +1,62 @@
+[
+  {
+    "name": "push ups",
+    "type": "upper body",
+    "part": "chest",
+    "id": 1
+  },
+  {
+    "name": "superman",
+    "type": "upper body",
+    "part": "back",
+    "id": 2
+  },
+  {
+    "name": "bridge",
+    "type": "upper body",
+    "part": "back",
+    "id": 3
+  },
+  {
+    "name": "leg curls",
+    "type": "upper body",
+    "part": "arms",
+    "id": 4
+  },
+  {
+    "name": "tricep dips",
+    "type": "upper body",
+    "part": "arms",
+    "id": 5
+  },
+  {
+    "name": "squats",
+    "type": "lower body",
+    "part": "legs",
+    "id": 6
+  },
+  {
+    "name": "lunges",
+    "type": "lower body",
+    "part": "legs",
+    "id": 7
+  },
+  {
+    "name": "climbers",
+    "type": "lower body",
+    "part": "legs",
+    "id": 8
+  },
+  {
+    "name": "sit ups",
+    "type": "lower body",
+    "part": "core",
+    "id": 9
+  },
+  {
+    "name": "leg raises",
+    "type": "lower body",
+    "part": "core",
+    "id": 10
+  }
+]
