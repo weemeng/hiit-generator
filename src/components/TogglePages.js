@@ -6,7 +6,11 @@ import WorkoutPage from "./WorkoutPage";
 class TogglePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { pageStatus: "default" };
+    this.state = {
+      pageStatus: "default",
+      time: 0,
+      focus: ""
+    };
   }
 
   triggerHomeState = () => {
@@ -15,7 +19,7 @@ class TogglePage extends React.Component {
     });
   };
 
-  triggerSetWorkoutState = () => {
+  triggerSetWorkoutState = props => {
     this.setState({
       pageStatus: 1
     });
@@ -41,6 +45,7 @@ class TogglePage extends React.Component {
           <WorkoutPage
             triggerHomeState={this.triggerHomeState}
             triggerSetWorkoutState={this.triggerSetWorkoutState}
+            updateTime={this.state.time}
           />
         );
       default:

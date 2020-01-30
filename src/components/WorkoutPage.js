@@ -1,23 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header.js";
-import Timer from "./Timer.js";
+import ExerciseTimer from "./ExerciseTimer.js";
 import WorkoutTimer from "./WorkoutTimer.js";
-
-const HomeButton = props => {
-  return <button onClick={props.goToHome}>Back to Home</button>;
-};
-
-const SetWorkoutButton = props => {
-  return <button onClick={props.goToSetWorkout}>Back to Set Workout</button>;
-};
+const SECONDS_IN_ONE_MINUTE = 60;
+const EXERCISE_DURATION = 5;
+const EXERCISE_MIN = 0;
 
 class WorkoutPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isExerciseTimerZero: false
+    };
   }
 
+  isTimerZero = (min, sec) => {
+    if (min === 0 && sec === 0) {
+      this.setState({ isExerciseTimerZero: true });
+      return true;
+    } else {
+      this.setState({ isExerciseTimerZero: false });
+      return false;
+    }
+  };
+
   render() {
+    const queries = new URLSearchParams(this.props.location.search);
+    const time = queries.get("time");
+    //const focus = queries.get("focus");
+    const timeInMin = time / SECONDS_IN_ONE_MINUTE;
+    const timeInSec = (time / SECONDS_IN_ONE_MINUTE) % timeInMin;
+
     return (
       <div>
         <Header />
@@ -41,18 +55,20 @@ class WorkoutPage extends React.Component {
 
         <div className="timers">
           <div data-testid="exercise-timer">
-            <Timer minutes="0" seconds="1" />
-          </div>
-          <div data-testid="workout-timer">
-            <WorkoutTimer />
-          </div>
-          <div>
-            <SetWorkoutButton
-              goToSetWorkout={this.props.triggerSetWorkoutState}
+            <ExerciseTimer
+              totalMin={EXERCISE_MIN}
+              totalSec={EXERCISE_DURATION}
+              resetTimer={this.isTimerZero}
             />
           </div>
+          <div data-testid="workout-timer">
+            <WorkoutTimer totalMin={timeInMin} totalSec={timeInSec} />
+          </div>
           <div>
-            <HomeButton goToHome={this.props.triggerHomeState} />
+            <Link to="/set-workout">Go back</Link>
+          </div>
+          <div>
+            <Link to="/home">Go to Home</Link>
           </div>
         </div>
       </div>

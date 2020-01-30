@@ -2,10 +2,8 @@ import React from "react";
 import Header from "./Header";
 import Profile from "./Profile";
 import Summary from "./Summary";
+import { Link } from "react-router-dom";
 
-const SetWorkoutButton = props => {
-  return <button onClick={props.goToSetWorkout}>New Workout</button>;
-};
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -21,9 +19,7 @@ class Home extends React.Component {
         <Profile />
         <Summary />
         <div>
-          <SetWorkoutButton
-            goToSetWorkout={this.props.triggerSetWorkoutState}
-          />
+          <Link to="/set-workout">Set Workout</Link>
         </div>
       </div>
     );

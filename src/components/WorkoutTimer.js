@@ -5,16 +5,18 @@ class WorkoutTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total_min: 15,
-      total_s: 0
+      totalTime: 0,
+      totalMin: this.props.totalMin,
+      totalSec: this.props.totalSec
     };
   }
 
   render() {
+    const { totalMin, totalSec } = this.state;
     return (
       <div>
-        Total Time
-        <Timer minutes={this.state.total_min} seconds={this.state.total_s} />
+        Total Time Remaining
+        <Timer minutes={totalMin} seconds={totalSec} />
       </div>
     );
   }

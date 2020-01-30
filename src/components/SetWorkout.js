@@ -1,21 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
-
-const HomeButton = props => {
-  return <button onClick={props.goToHome}>Back</button>;
-};
-
-const GenerateButton = props => {
-  return <button onClick={props.goToWorkout}>Generate</button>;
-};
+const MIN_IN_SECONDS = 60;
 
 class SetWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       time: 0,
-      focus: "",
-      toGenerate: false
+      focus: ""
     };
   }
 
@@ -31,11 +24,26 @@ class SetWorkout extends React.Component {
     });
   };
 
-  toggleWorkoutPage = () => {
-    this.setState = state => ({ toGenerate: state.toGenerate });
-  };
+  constructQueryString(time, focus, link) {
+    const queryArr = [time, focus];
+    var queryURL = link.concat(
+      "time=",
+      queryArr[0],
+      "&",
+      "focus=",
+      queryArr[1]
+    );
+    return queryURL;
+  }
 
   render() {
+    const link = "./workout?";
+    const queryURL = this.constructQueryString(
+      this.state.time,
+      this.state.focus,
+      link
+    );
+
     return (
       <div>
         <Header />
@@ -43,16 +51,16 @@ class SetWorkout extends React.Component {
           <h3>Set Workout</h3>
           <div className="setTime">
             <h5>Time</h5>
-            <button value="15" onClick={this.handleTimeClick}>
+            <button value={900} onClick={this.handleTimeClick}>
               15min
             </button>
-            <button value="25" onClick={this.handleTimeClick}>
+            <button value={50000} onClick={this.handleTimeClick}>
               25min
             </button>
-            <button value="45" onClick={this.handleTimeClick}>
+            <button value={162000} onClick={this.handleTimeClick}>
               45min
             </button>
-            <p>Time: {this.state.time}</p>
+            <p>Time: {this.state.time / MIN_IN_SECONDS}</p>
           </div>
           <div className="setFocus">
             <h5>Focus</h5>
@@ -68,10 +76,10 @@ class SetWorkout extends React.Component {
             <p>Focus: {this.state.focus}</p>
           </div>
           <hr></hr>
-          <GenerateButton goToWorkout={this.props.triggerWorkoutState} />
+          <Link to={queryURL}>Generate</Link>
           <hr></hr>
           <div>
-            <HomeButton goToHome={this.props.triggerHomeState} />
+            <Link to="/home">Home</Link>
           </div>
         </div>
       </div>
@@ -80,3 +88,7 @@ class SetWorkout extends React.Component {
 }
 
 export default SetWorkout;
+//const HomeButton = props => {
+//return <button onClick={props.goToHome}>Back</button>;
+//};
+//<HomeButton goToHome={this.props.triggerHomeState} />

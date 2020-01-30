@@ -4,7 +4,6 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timerOn: false,
       minutes: this.props.minutes,
       seconds: this.props.seconds
     };
@@ -36,6 +35,7 @@ class Timer extends React.Component {
   componentWillUnmount() {
     clearInterval(this.myInterval);
   }
+
   render() {
     const { minutes, seconds } = this.state;
     return (
@@ -44,7 +44,7 @@ class Timer extends React.Component {
           <h1>Workout Completed</h1>
         ) : (
           <h1>
-            Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+            {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
           </h1>
         )}
       </div>
