@@ -1,24 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./components/Home";
-import SetWorkout from "./components/SetWorkout";
-import WorkoutPage from "./components/WorkoutPage";
+//import { BrowserRouter, Route, Switch } from "react-router-dom";
+import TogglePages from "./components/TogglePages";
 import "./App.css";
-
-function App() {
-  return (
-    <BrowserRouter>
+class App extends React.Component {
+  render() {
+    return (
       <div className="App">
         <div>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/set-workout" component={SetWorkout} />
-            <Route path="/workout-page" component={WorkoutPage} />
-          </Switch>
+          <TogglePages />
         </div>
       </div>
-    </BrowserRouter>
-  );
+    );
+  }
 }
 
 export default App;

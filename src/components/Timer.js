@@ -4,23 +4,25 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      minutes: 15,
-      seconds: 30
+      timerOn: false,
+      minutes: this.props.minutes,
+      seconds: this.props.seconds
     };
   }
 
   componentDidMount() {
     this.myInterval = setInterval(() => {
       const { minutes, seconds } = this.state;
-
+      this.setState({ timerOn: true });
       if (seconds > 0) {
         this.setState(({ seconds }) => ({
           seconds: seconds - 1
         }));
       }
-      if (seconds === 0) {
-        if (minutes === 0) {
+      if (Number(seconds) === 0) {
+        if (Number(minutes) === 0) {
           clearInterval(this.myInterval);
+          this.setState({ timerOn: false });
         } else {
           this.setState(({ minutes }) => ({
             minutes: minutes - 1,
@@ -34,7 +36,6 @@ class Timer extends React.Component {
   componentWillUnmount() {
     clearInterval(this.myInterval);
   }
-
   render() {
     const { minutes, seconds } = this.state;
     return (

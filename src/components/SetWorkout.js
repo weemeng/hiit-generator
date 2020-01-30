@@ -1,14 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Header from "./Header";
+
+const HomeButton = props => {
+  return <button onClick={props.goToHome}>Back</button>;
+};
+
+const GenerateButton = props => {
+  return <button onClick={props.goToWorkout}>Generate</button>;
+};
 
 class SetWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialised: true
+      time: 0,
+      focus: "",
+      toGenerate: false
     };
   }
+
+  handleTimeClick = event => {
+    this.setState({
+      time: event.target.value
+    });
+  };
+
+  handleFocusClick = event => {
+    this.setState({
+      focus: event.target.value
+    });
+  };
+
+  toggleWorkoutPage = () => {
+    this.setState = state => ({ toGenerate: state.toGenerate });
+  };
 
   render() {
     return (
@@ -18,25 +43,35 @@ class SetWorkout extends React.Component {
           <h3>Set Workout</h3>
           <div className="setTime">
             <h5>Time</h5>
-            <button>15min</button>
-            <button>25min</button>
-            <button>45min</button>
+            <button value="15" onClick={this.handleTimeClick}>
+              15min
+            </button>
+            <button value="25" onClick={this.handleTimeClick}>
+              25min
+            </button>
+            <button value="45" onClick={this.handleTimeClick}>
+              45min
+            </button>
+            <p>Time: {this.state.time}</p>
           </div>
           <div className="setFocus">
             <h5>Focus</h5>
-            <button>upper body</button>
-            <button>lower body</button>
-            <button>core</button>
+            <button value="upper body" onClick={this.handleFocusClick}>
+              upper body
+            </button>
+            <button value="lower body" onClick={this.handleFocusClick}>
+              lower body
+            </button>
+            <button value="core" onClick={this.handleFocusClick}>
+              core
+            </button>
+            <p>Focus: {this.state.focus}</p>
           </div>
           <hr></hr>
-          <div>
-            <Link to="/workout-page">
-              <button>Generate</button>
-            </Link>
-          </div>
+          <GenerateButton goToWorkout={this.props.triggerWorkoutState} />
           <hr></hr>
           <div>
-            <Link to="/">BACK</Link>
+            <HomeButton goToHome={this.props.triggerHomeState} />
           </div>
         </div>
       </div>
