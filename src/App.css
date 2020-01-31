@@ -19,6 +19,9 @@ button {
   border: 1px solid white;
   border-radius: 0.2em;
 }
+iframe {
+  width: 360px;
+}
 
 .timers {
   border-radius: 1px dashed grey;
