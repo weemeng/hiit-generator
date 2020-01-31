@@ -54,13 +54,13 @@ class SetWorkout extends React.Component {
             <button value={900} onClick={this.handleTimeClick}>
               15min
             </button>
-            <button value={50000} onClick={this.handleTimeClick}>
+            <button value={1500} onClick={this.handleTimeClick}>
               25min
             </button>
-            <button value={162000} onClick={this.handleTimeClick}>
+            <button value={2700} onClick={this.handleTimeClick}>
               45min
             </button>
-            <p>Time: {this.state.time / MIN_IN_SECONDS}</p>
+            <p>Time(min): {this.state.time / MIN_IN_SECONDS}</p>
           </div>
           <div className="setFocus">
             <h5>Focus</h5>
@@ -76,10 +76,14 @@ class SetWorkout extends React.Component {
             <p>Focus: {this.state.focus}</p>
           </div>
           <hr></hr>
-          <Link to={queryURL}>Generate</Link>
+          <Link to={queryURL}>
+            <button>Generate</button>
+          </Link>
           <hr></hr>
           <div>
-            <Link to="/home">Home</Link>
+            <Link to="/home">
+              <button>Home</button>
+            </Link>
           </div>
         </div>
       </div>

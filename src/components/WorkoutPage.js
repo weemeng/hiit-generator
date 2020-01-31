@@ -3,27 +3,19 @@ import { Link } from "react-router-dom";
 import Header from "./Header.js";
 import ExerciseTimer from "./ExerciseTimer.js";
 import WorkoutTimer from "./WorkoutTimer.js";
+import "../App.css";
 const SECONDS_IN_ONE_MINUTE = 60;
-const EXERCISE_DURATION = 5;
+const EXERCISE_DURATION = 30;
 const EXERCISE_MIN = 0;
 
 class WorkoutPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isExerciseTimerZero: false
+      exerciseMin: EXERCISE_MIN,
+      exerciseSec: EXERCISE_DURATION
     };
   }
-
-  isTimerZero = (min, sec) => {
-    if (min === 0 && sec === 0) {
-      this.setState({ isExerciseTimerZero: true });
-      return true;
-    } else {
-      this.setState({ isExerciseTimerZero: false });
-      return false;
-    }
-  };
 
   render() {
     const queries = new URLSearchParams(this.props.location.search);
@@ -38,37 +30,37 @@ class WorkoutPage extends React.Component {
         <div data-testid="exercise-card">
           <div className="gif">
             <iframe
-              src="https://giphy.com/embed/ZA68nmuNOXBecacY4Z"
+              src="https://giphy.com/embed/8JZfoNdMCWGSjbSkaT"
               className="giphy-embed"
               allowFullScreen
               title="push-up-gif"
             ></iframe>
             <br></br>
             <span>
-              <a href="https://giphy.com/gifs/8fit-workout-hiit-exercises-ZA68nmuNOXBecacY4Z">
-                via GIPHY
-              </a>
+              <a href="https://giphy.com/">via GIPHY</a>
             </span>
             <h3>PUSH UPS</h3>
           </div>
         </div>
-
         <div className="timers">
           <div data-testid="exercise-timer">
             <ExerciseTimer
-              totalMin={EXERCISE_MIN}
-              totalSec={EXERCISE_DURATION}
-              resetTimer={this.isTimerZero}
+              totalMin={this.state.exerciseMin}
+              totalSec={this.state.exerciseSec}
             />
           </div>
           <div data-testid="workout-timer">
             <WorkoutTimer totalMin={timeInMin} totalSec={timeInSec} />
           </div>
           <div>
-            <Link to="/set-workout">Go back</Link>
+            <Link to="/set-workout">
+              <button>Back to Set Workout</button>
+            </Link>
           </div>
           <div>
-            <Link to="/home">Go to Home</Link>
+            <Link to="/home">
+              <button>Go to Home</button>
+            </Link>
           </div>
         </div>
       </div>

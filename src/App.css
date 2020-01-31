@@ -2,7 +2,24 @@
   text-align: center;
 }
 
+.header {
+  background-color: skyblue;
+  margin: 0;
+  padding: 0;
+  vertical-align: center;
+}
+
 .profile img {
   height: 240px;
   width: auto;
+}
+
+button {
+  background-color: skyblue;
+  border: 1px solid white;
+  border-radius: 0.2em;
+}
+
+.timers {
+  border-radius: 1px dashed grey;
 }

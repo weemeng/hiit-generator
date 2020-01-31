@@ -19,7 +19,9 @@ class Home extends React.Component {
         <Profile />
         <Summary />
         <div>
-          <Link to="/set-workout">Set Workout</Link>
+          <Link to="/set-workout">
+            <button>New Workout</button>
+          </Link>
         </div>
       </div>
     );

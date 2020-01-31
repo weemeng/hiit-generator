@@ -45,7 +45,6 @@ class TogglePage extends React.Component {
           <WorkoutPage
             triggerHomeState={this.triggerHomeState}
             triggerSetWorkoutState={this.triggerSetWorkoutState}
-            updateTime={this.state.time}
           />
         );
       default:

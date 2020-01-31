@@ -4,7 +4,7 @@ class Summary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: "Insert date, and workout details here"
+      data: "30 Jan 2020 - 15min HIIT Workout"
     };
   }
 

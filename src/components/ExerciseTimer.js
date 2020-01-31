@@ -6,25 +6,15 @@ class ExerciseTimer extends React.Component {
     super(props);
     this.state = {
       totalMin: this.props.totalMin,
-      totalSec: this.props.totalSec,
-      resetTimer: false
+      totalSec: this.props.totalSec
     };
   }
-
-  refreshTimer = props => {
-    if (this.props.isTimerZero(this.totalMin, this.totalSec)) {
-      this.setState({
-        totalMin: this.props.totalMin,
-        totalSec: this.props.totalSec
-      });
-    }
-  };
 
   render() {
     return (
       <div>
         Exercise Time Left:
-        <Timer minutes={this.state.totalMin} seconds={this.state.totalSec} />
+        <Timer minutes={this.props.totalMin} seconds={this.props.totalSec} />
       </div>
     );
   }
