@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import "./SetWorkout.css";
 const MIN_IN_SECONDS = 60;
 
 class SetWorkout extends React.Component {
@@ -48,41 +49,41 @@ class SetWorkout extends React.Component {
       <div>
         <Header />
         <div className="workout-params" data-testid="set-workout-params">
-          <h3>Set Workout</h3>
-          <div className="setTime">
-            <h5>Time</h5>
-            <button value={900} onClick={this.handleTimeClick}>
-              15min
-            </button>
-            <button value={1500} onClick={this.handleTimeClick}>
-              25min
-            </button>
-            <button value={2700} onClick={this.handleTimeClick}>
-              45min
-            </button>
-            <p>Time(min): {this.state.time / MIN_IN_SECONDS}</p>
+          <h4>Set Workout</h4>
+          <div className="set-time">
+            <h3>Time(min): {this.state.time / MIN_IN_SECONDS}</h3>
+            <div className="set-time__buttons">
+              <button value={900} onClick={this.handleTimeClick}>
+                15min
+              </button>
+              <button value={1500} onClick={this.handleTimeClick}>
+                25min
+              </button>
+              <button value={2700} onClick={this.handleTimeClick}>
+                45min
+              </button>
+            </div>
           </div>
-          <div className="setFocus">
-            <h5>Focus</h5>
-            <button value="upper body" onClick={this.handleFocusClick}>
-              upper body
-            </button>
-            <button value="lower body" onClick={this.handleFocusClick}>
-              lower body
-            </button>
-            <button value="core" onClick={this.handleFocusClick}>
-              core
-            </button>
-            <p>Focus: {this.state.focus}</p>
+          <div className="set-focus">
+            <h3>Focus: {this.state.focus}</h3>
+            <div className="set-focus__buttons">
+              <button value="upper body" onClick={this.handleFocusClick}>
+                upper body
+              </button>
+              <button value="lower body" onClick={this.handleFocusClick}>
+                lower body
+              </button>
+              <button value="core" onClick={this.handleFocusClick}>
+                core
+              </button>
+            </div>
           </div>
-          <hr></hr>
-          <Link to={queryURL}>
-            <button>Generate</button>
-          </Link>
-          <hr></hr>
-          <div>
+          <div className="workout-params__nav-buttons">
             <Link to="/home">
-              <button>Home</button>
+              <button>&#9665; Home</button>
+            </Link>
+            <Link to={queryURL}>
+              <button className="workout-params__generate-button">Generate &#9655;</button>
             </Link>
           </div>
         </div>
