@@ -1,4 +1,4 @@
-import { generateWorkout } from "./WorkoutGenerator";
+import { generateWorkout } from "../functions/WorkoutGenerator";
 
 describe("Generate", () => {
   it("should return an exercise array when called", () => {

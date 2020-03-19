@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BaseTimer from "./BaseTimer";
-
-import "../../public/css/WorkoutPage.css";
+import "../css/WorkoutPage.css";
 import WorkoutGenerator from "../functions/WorkoutGenerator.js";
 const SECONDS_IN_ONE_MINUTE = 60;
 const EXERCISE_DURATION = 30;
