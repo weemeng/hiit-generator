@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./SetWorkout.css";
+import "../../public/css/SetWorkout.css";
 const MIN_IN_SECONDS = 60;
 
 class SetWorkout extends React.Component {
