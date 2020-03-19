@@ -1,0 +1,75 @@
+.workout-timer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  color: #2d2d2d;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2d2d2d;
+}
+
+.next-exercise-render {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.workout-page__nav-buttons {
+  direction: flex;
+  flex-direction: row;
+  padding: 1.2em;
+  margin: 0em 0em 0em 0em;
+}
+
+.workout-page__nav-buttons button {
+  width: 11em;
+  height: 2.2em;
+  margin: 2em 1.8em 2.5em 2.4em;
+  padding: 0em;
+  background-color: #5f9ea0;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #5f9ea0;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px #999999;
+}
+
+.workout-page__nav-buttons button:hover {
+  background-color: #549092;
+  border-left: 0;
+  border-right: px;
+  box-shadow: 0 5px #999999;
+}
+
+.workout-page__nav-buttons button:active {
+  background-color: #417274;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.current-exercise-render {
+  background-color: #549092;
+  padding-top: 2.5em;
+}
+.exercise-card h3 {
+  margin: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.exercise-timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid #2d2d2d;
+}
+.exercise-timer h1 {
+  margin: 0.3em;
+  color: #2d2d2d;
+}

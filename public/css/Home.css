@@ -1,0 +1,62 @@
+/*font-family: 'Press Start 2P', cursive;
+font-family: 'Squada One', cursive;
+font-family: 'Do Hyeon', sans-serif;*/
+
+.home-box {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  align-items: center;
+  width: 50%;
+  border: 3px solid black;
+  padding: 20px 10px;
+}
+
+.home-box button {
+  width: 90px;
+  margin: 0.2em 1.8em 02.2em 1.8em;
+  background-color: #5f9ea0;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #5f9ea0;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px #999999;
+}
+
+.home-box button:hover {
+  background-color: #549092;
+  border-left: 0;
+  border-right: px;
+  box-shadow: 0 5px #999999;
+}
+
+.home-box button:active {
+  background-color: #417274;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.home {
+  padding: 30px 20px 20px 20px;
+}
+
+p {
+  width: 30em;
+  text-align: center;
+  margin: auto;
+  padding: 20px 10px 10px 5px;
+}
+
+.about div {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  width: 70%;
+}

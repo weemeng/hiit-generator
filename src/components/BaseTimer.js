@@ -28,46 +28,47 @@ class BaseTimer extends React.Component {
     });
   }
 
+  changeTimerState = (currTime, startTime, timeDuration) => {
+    const timeLeft =
+      timeDuration - (currTime - startTime) / MILLISECONDS_IN_ONE_SECOND;
+    this.setState({ ...this, 
+      minutes: Math.floor(timeLeft / ONE_MINUTE_IN_SECONDS),
+      seconds: Math.floor(timeLeft % ONE_MINUTE_IN_SECONDS),
+      timeLeft: Math.floor(timeLeft)
+    });
+    return true;
+  };
+
   setExerciseInterval() {
     setInterval(() => {
-      let currTime = Date.now();
-      let startTime = this.state.startTime;
-      let timeDuration = this.state.duration;
       let repeatCountdown = this.state.repeatedCount;
-      let timeLeft =
-        timeDuration - (currTime - startTime) / MILLISECONDS_IN_ONE_SECOND;
+      this.changeTimerState(
+        Date.now(),
+        this.state.startTime,
+        this.state.duration
+      );
 
-      this.setState({
-        minutes: Math.floor(timeLeft / ONE_MINUTE_IN_SECONDS),
-        seconds: Math.floor(timeLeft % ONE_MINUTE_IN_SECONDS)
-      });
-
-      if (timeLeft <= 1 && repeatCountdown > 0) {
+      if (this.state.timeLeft <= 0 && repeatCountdown > 0) {
         this.setState({
           seconds: this.props.seconds,
           minutes: this.props.minutes,
           startTime: Date.now(),
-          repeatedCount: repeatCountdown-1
+          repeatedCount: repeatCountdown - 1
         });
-      } else if (timeLeft <= 0 && repeatCountdown === 0) {
+      } else if (this.state.timeLeft <= 0 && repeatCountdown === 0) {
         this.setTimeToZero();
       }
     }, 1000);
   }
+
   setWorkoutInterval() {
     setInterval(() => {
-      let currTime = Date.now();
-      let startTime = this.state.startTime;
-      let timeDuration = this.state.duration;
-      let timeLeft =
-        timeDuration - (currTime - startTime) / MILLISECONDS_IN_ONE_SECOND;
-
-      this.setState({
-        minutes: Math.floor(timeLeft / ONE_MINUTE_IN_SECONDS),
-        seconds: Math.floor(timeLeft % ONE_MINUTE_IN_SECONDS)
-      });
-
-      if (timeLeft <= 0 && !this.state.isExerciseTimer) {
+      this.changeTimerState(
+        Date.now(),
+        this.state.startTime,
+        this.state.duration
+      );
+      if (this.state.timeLeft === 0) {
         this.setTimeToZero();
       }
     }, 1000);

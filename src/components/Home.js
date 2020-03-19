@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 import "./Home.css";
 
 const HiitMeUp = () => {
@@ -45,7 +44,6 @@ class Home extends React.Component {
     // return <div>{displayAbout ? <About /> : <HiitMeUp />}</div>;
     return (
       <div>
-        <Header />
         <div className="home-box">
           {!this.state.displayAbout ? (HiitMeUp()) : (About())}
         </div>

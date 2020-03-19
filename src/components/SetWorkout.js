@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 import "./SetWorkout.css";
 const MIN_IN_SECONDS = 60;
 
@@ -8,6 +7,7 @@ class SetWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      displayAbout: false,
       time: 0,
       focus: ""
     };
@@ -47,7 +47,6 @@ class SetWorkout extends React.Component {
 
     return (
       <div>
-        <Header />
         <div className="workout-params" data-testid="set-workout-params">
           <h4>Set Workout</h4>
           <div className="set-time">
@@ -56,12 +55,12 @@ class SetWorkout extends React.Component {
               <button value={900} onClick={this.handleTimeClick}>
                 15min
               </button>
-              <button value={1500} onClick={this.handleTimeClick}>
+              {/* <button value={1500} onClick={this.handleTimeClick}>
                 25min
               </button>
               <button value={2700} onClick={this.handleTimeClick}>
                 45min
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="set-focus">
@@ -83,7 +82,9 @@ class SetWorkout extends React.Component {
               <button>&#9665; Home</button>
             </Link>
             <Link to={queryURL}>
-              <button className="workout-params__generate-button">Generate &#9655;</button>
+              <button className="workout-params__generate-button">
+                Generate &#9655;
+              </button>
             </Link>
           </div>
         </div>
@@ -93,7 +94,3 @@ class SetWorkout extends React.Component {
 }
 
 export default SetWorkout;
-//const HomeButton = props => {
-//return <button onClick={props.goToHome}>Back</button>;
-//};
-//<HomeButton goToHome={this.props.triggerHomeState} />

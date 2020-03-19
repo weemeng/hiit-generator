@@ -1,0 +1,73 @@
+.header {
+    margin-bottom:4em;
+}
+
+.workout-params {
+  display: block;
+  width: 340px;
+  height: 260px;
+  justify-content: center;
+  margin: auto;
+  color: #ffffff;
+  border: 3px solid #ce5555;
+  background-color: #ce5555;
+  box-shadow: 12px 12px 2px 1px#666666;
+}
+
+.workout-params h3 {
+    color: #e6ca71
+}
+.workout-params button {
+  width: 83px;
+  height: 24px;
+  margin: 0.5em;
+  color: #ffffff;
+  background-color: #7a2f2f;
+  border: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.workout-params button:hover {
+  background-color: rgb(181, 197, 110); /* Green */
+  color: white;
+}
+
+.workout-params__nav-buttons {
+  direction: flex;
+  flex-direction: row;
+  padding: 1.8em;
+  margin: 1.5em 0em 0em 0em;
+  
+}
+
+.workout-params__nav-buttons button {
+  width: 82.5px;
+  height: 30px;
+  margin: 2em 1.8em 2.5em 2.4em;
+  background-color: #5f9ea0;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #5f9ea0;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px #999999;
+}
+
+.workout-params__nav-buttons button:hover {
+  background-color: #549092;
+  border-left: 0;
+  border-right: px;
+  box-shadow: 0 5px #999999;
+}
+
+.workout-params__nav-buttons button:active {
+  background-color: #417274;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
