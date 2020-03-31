@@ -55,12 +55,6 @@ class SetWorkout extends React.Component {
               <button value={900} onClick={this.handleTimeClick}>
                 15min
               </button>
-              {/* <button value={1500} onClick={this.handleTimeClick}>
-                25min
-              </button>
-              <button value={2700} onClick={this.handleTimeClick}>
-                45min
-              </button> */}
             </div>
           </div>
           <div className="set-focus">
@@ -71,9 +65,6 @@ class SetWorkout extends React.Component {
               </button>
               <button value="lower body" onClick={this.handleFocusClick}>
                 lower body
-              </button>
-              <button value="core" onClick={this.handleFocusClick}>
-                core
               </button>
             </div>
           </div>
