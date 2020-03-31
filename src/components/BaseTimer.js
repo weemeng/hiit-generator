@@ -10,15 +10,15 @@ class BaseTimer extends React.Component {
       seconds: this.props.seconds,
       duration: this.props.duration,
       startTime: this.props.startTime,
-      isExerciseTimer: true,
+      isExerciseTimer: this.props.isExerciseTimer,
       repeatedCount: this.props.repeatedCount
     };
+    this.intervalId = 0;
   }
   componentDidMount() {
-    let intervalTimer = this.state.isExerciseTimer
+    this.intervalId = this.state.isExerciseTimer
       ? this.setExerciseInterval()
       : this.setWorkoutInterval();
-    clearInterval(intervalTimer);
   }
 
   setTimeToZero() {
@@ -26,12 +26,14 @@ class BaseTimer extends React.Component {
       minutes: 0,
       seconds: 0
     });
+    clearInterval(this.intervalId);
   }
 
   changeTimerState = (currTime, startTime, timeDuration) => {
     const timeLeft =
       timeDuration - (currTime - startTime) / MILLISECONDS_IN_ONE_SECOND;
-    this.setState({ ...this, 
+    this.setState({
+      ...this,
       minutes: Math.floor(timeLeft / ONE_MINUTE_IN_SECONDS),
       seconds: Math.floor(timeLeft % ONE_MINUTE_IN_SECONDS),
       timeLeft: Math.floor(timeLeft)
@@ -40,7 +42,7 @@ class BaseTimer extends React.Component {
   };
 
   setExerciseInterval() {
-    setInterval(() => {
+    return setInterval(() => {
       let repeatCountdown = this.state.repeatedCount;
       this.changeTimerState(
         Date.now(),
@@ -62,13 +64,13 @@ class BaseTimer extends React.Component {
   }
 
   setWorkoutInterval() {
-    setInterval(() => {
+    return setInterval(() => {
       this.changeTimerState(
         Date.now(),
         this.state.startTime,
         this.state.duration
       );
-      if (this.state.timeLeft === 0) {
+      if (this.state.timeLeft < 0) {
         this.setTimeToZero();
       }
     }, 1000);

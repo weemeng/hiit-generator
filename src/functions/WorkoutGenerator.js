@@ -19,6 +19,7 @@ class WorkoutGenerator extends React.Component {
       nextIndex: 1,
       startTime: this.props.startTime
     };
+    this.workoutIntervalId = 0;
   }
 
   repeatExerciseTimer = () => {
@@ -33,7 +34,6 @@ class WorkoutGenerator extends React.Component {
       exercises.push(exerciseData[targetId].name);
       exerciseData.splice(targetId, 1);
     }
-    console.log(exercises);
     return exercises;
   };
 
@@ -54,40 +54,34 @@ class WorkoutGenerator extends React.Component {
         );
       }
       default: {
-        console.log("No Exercise Generated");
+        throw new Error("No Exercise Generated");
       }
     }
   };
 
   updateExerciseInterval = () => {
-    setInterval(() => {
-      let currIdx = this.state.currentIndex + 1;
+    return setInterval(() => {
+      let currIdx = this.state.nextIndex;
       let nextIdx = this.state.nextIndex + 1;
-      if (currIdx === this.state.exerciseArray.length) {
-        currIdx = 0;
-        nextIdx = currIdx + 1;
+      if (currIdx === this.state.exerciseArray.length-1) {
+        nextIdx = 0;
       }
       this.setState({
         currentIndex: currIdx,
         nextIndex: nextIdx
       });
-      // this.props.nextExerciseCallback(
-      //   this.state.exerciseArray[this.state.nextIndex]
-      // );
-      console.log(this.state.currentIndex);
-      console.log(this.state.nextIndex);
-    }, 30000);
+    });
   };
 
   componentDidMount() {
     this.setState({
       exerciseArray: this.generateWorkout()
     });
+    this.workoutIntervalId = this.updateExerciseInterval();
   }
 
-  componentDidUpdate() {
-    this.updateExerciseInterval();
-    console.log("component did update");
+  componentWillUnmount() {
+    clearInterval(this.workoutIntervalId);
   }
 
   render() {
@@ -102,8 +96,7 @@ class WorkoutGenerator extends React.Component {
             </span>
           </div>
           <h3>
-            Current Exercise: <br></br>{" "}
-            {this.state.exerciseArray[this.state.currentIndex]}
+            Current Exercise: <br></br> {this.state.exerciseArray[this.state.currentIndex]}
           </h3>
         </div>
         <div className="bottom-row">
@@ -119,8 +112,7 @@ class WorkoutGenerator extends React.Component {
           </div>
           <div className="next-exercise-render">
             <h5>
-              Next Exercise: <br></br>{" "}
-              {this.state.exerciseArray[this.state.nextIndex]}
+              Next Exercise: <br></br> {this.state.exerciseArray[this.state.nextIndex]}
             </h5>
           </div>
         </div>
