@@ -17,9 +17,14 @@ const HiitMeUp = () => {
 const About = () => {
   return (
     <div className="about">
-      {<p>
-        HIIT ME UP is a casual web app to make getting that next workout done effortlessly &#9786; Please feel free to send your feedback for improvements or other features <a href="mailto:vallq@outlook.com">here</a>!
-      </p>}
+      {
+        <p>
+          HIIT ME UP is an exercise generator that makes getting that next
+          workout done effortlessly &#9786; Please feel free to send your
+          feedback for improvements or other features{" "}
+          <a href="mailto:vallq@outlook.com">here</a>!
+        </p>
+      }
     </div>
   );
 };
@@ -35,7 +40,7 @@ class Home extends React.Component {
   toggleAbout = event => {
     this.setState(prevState => {
       const displayAbout = prevState.displayAbout;
-      return {displayAbout: !displayAbout};
+      return { displayAbout: !displayAbout };
     });
   };
 
@@ -45,9 +50,11 @@ class Home extends React.Component {
     return (
       <div>
         <div className="home-box">
-          {!this.state.displayAbout ? (HiitMeUp()) : (About())}
+          {!this.state.displayAbout ? HiitMeUp() : About()}
         </div>
-        <button onClick={this.toggleAbout}>{!this.state.displayAbout ? ("About") : ("Go Back")}</button>
+        <button onClick={this.toggleAbout}>
+          {!this.state.displayAbout ? "About" : "Go Back"}
+        </button>
       </div>
     );
   }
