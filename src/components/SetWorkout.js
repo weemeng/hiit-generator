@@ -50,7 +50,9 @@ class SetWorkout extends React.Component {
         <div className="workout-params" aria-label="set-workout-params">
           <h4>Set Workout</h4>
           <div className="set-time">
-            <h3 aria-label="time">Time(min): {this.state.time / MIN_IN_SECONDS}</h3>
+            <h3 aria-label="time">
+              Time(min): {this.state.time / MIN_IN_SECONDS}
+            </h3>
             <div className="set-time__buttons">
               <button
                 value={900}
