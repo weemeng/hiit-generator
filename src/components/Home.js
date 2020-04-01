@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../css/Home.css";
 
 const HiitMeUp = () => {
@@ -48,16 +48,14 @@ class Home extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <div className="home-box" aria-label="home">
-            {!this.state.displayAbout ? HiitMeUp() : About()}
-          </div>
-          <button onClick={this.toggleAbout} aria-label="about-button">
-            {!this.state.displayAbout ? "About" : "Go Back"}
-          </button>
+      <div>
+        <div className="home-box" aria-label="home">
+          {!this.state.displayAbout ? HiitMeUp() : About()}
         </div>
-      </BrowserRouter>
+        <button onClick={this.toggleAbout} aria-label="about-button">
+          {!this.state.displayAbout ? "About" : "Go Back"}
+        </button>
+      </div>
     );
   }
 }
