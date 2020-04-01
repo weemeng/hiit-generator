@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import "../css/Home.css";
 
 const HiitMeUp = () => {
   return (
-    <div className="home" data-testid="home">
+    <div className="home">
       <div>
         <Link to="/set-workout">
-          <button className="hitt-me">HIIT ME UP</button>
+          <button className="hitt-me" aria-label="hmu-button">
+            HIIT ME UP
+          </button>
         </Link>
       </div>
     </div>
@@ -16,7 +18,7 @@ const HiitMeUp = () => {
 
 const About = () => {
   return (
-    <div className="about">
+    <div className="about" aria-label="about-info">
       {
         <p>
           HIIT ME UP is an exercise generator that makes getting that next
@@ -30,8 +32,8 @@ const About = () => {
 };
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       displayAbout: false
     };
@@ -45,17 +47,17 @@ class Home extends React.Component {
   };
 
   render() {
-    // let {displayAbout} = this.state;
-    // return <div>{displayAbout ? <About /> : <HiitMeUp />}</div>;
     return (
-      <div>
-        <div className="home-box">
-          {!this.state.displayAbout ? HiitMeUp() : About()}
+      <BrowserRouter>
+        <div>
+          <div className="home-box" aria-label="home">
+            {!this.state.displayAbout ? HiitMeUp() : About()}
+          </div>
+          <button onClick={this.toggleAbout} aria-label="about-button">
+            {!this.state.displayAbout ? "About" : "Go Back"}
+          </button>
         </div>
-        <button onClick={this.toggleAbout}>
-          {!this.state.displayAbout ? "About" : "Go Back"}
-        </button>
-      </div>
+      </BrowserRouter>
     );
   }
 }
