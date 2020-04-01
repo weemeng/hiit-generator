@@ -14,7 +14,8 @@ class WorkoutGenerator extends React.Component {
       focus: this.props.focus,
       time: this.props.time,
       duration: this.props.duration,
-      exerciseArray: [],
+      exerciseNames: [],
+      gifNames: [],
       currentIndex: 0,
       nextIndex: 1,
       startTime: this.props.startTime
@@ -28,12 +29,19 @@ class WorkoutGenerator extends React.Component {
 
   generateExerciseArray = (numberOfExercises, exerciseData) => {
     var exercises = [];
+    var gifNames = [];
 
     for (let i = 0; i < numberOfExercises; i++) {
       const targetId = Math.floor(exerciseData.length * Math.random());
       exercises.push(exerciseData[targetId].name);
+      gifNames.push(exerciseData[targetId].gif);
       exerciseData.splice(targetId, 1);
     }
+
+    this.setState({
+      gifNames: gifNames
+    });
+
     return exercises;
   };
 
@@ -63,7 +71,7 @@ class WorkoutGenerator extends React.Component {
     return setInterval(() => {
       let currIdx = this.state.nextIndex;
       let nextIdx = this.state.nextIndex + 1;
-      if (currIdx === this.state.exerciseArray.length - 1) {
+      if (currIdx === this.state.exerciseNames.length - 1) {
         nextIdx = 0;
       }
       this.setState({
@@ -75,7 +83,7 @@ class WorkoutGenerator extends React.Component {
 
   componentDidMount() {
     this.setState({
-      exerciseArray: this.generateWorkout()
+      exerciseNames: this.generateWorkout()
     });
     this.workoutIntervalId = this.updateExerciseInterval();
   }
@@ -89,7 +97,10 @@ class WorkoutGenerator extends React.Component {
       <div>
         <div className="current-exercise-render">
           <div className="gif">
-            <iframe title="exercise-gif"></iframe>
+            <iframe
+              title="exercise-gif"
+              src={this.state.gifNames[this.state.currentIndex]}
+            ></iframe>
             <br></br>
             <span>
               <a href="https://giphy.com/">via GIPHY</a>
@@ -97,7 +108,9 @@ class WorkoutGenerator extends React.Component {
           </div>
           <h3>
             Current Exercise: <br></br>{" "}
-            {this.state.exerciseArray[this.state.currentIndex]}
+            {this.state.exerciseNames
+              ? this.state.exerciseNames[this.state.currentIndex]
+              : "No Exercise"}
           </h3>
         </div>
         <div className="bottom-row">
@@ -114,7 +127,7 @@ class WorkoutGenerator extends React.Component {
           <div className="next-exercise-render">
             <h5>
               Next Exercise: <br></br>{" "}
-              {this.state.exerciseArray[this.state.nextIndex]}
+              {this.state.exerciseNames[this.state.nextIndex]}
             </h5>
           </div>
         </div>
