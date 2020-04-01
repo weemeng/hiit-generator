@@ -26,16 +26,16 @@ class WorkoutPage extends React.Component {
     const timeInSec = (time / SECONDS_IN_ONE_MINUTE) % timeInMin;
 
     return (
-      <div>
+      <div aria-label="workout-page">
         <div className="workout-page__nav-buttons">
           <Link to="/set-workout">
-            <button>&#9665; Reset Workout</button>
+            <button aria-label="reset-button">&#9665; Reset Workout</button>
           </Link>
           <Link to="/home">
-            <button>Go to Home &#9655;</button>
+            <button aria-label="home-button">Go to Home &#9655;</button>
           </Link>
         </div>
-        <div className="workout-timer" data-testid="workout-timer">
+        <div className="workout-timer" aria-label="workout-timer">
           <BaseTimer
             minutes={timeInMin}
             seconds={timeInSec}
@@ -44,7 +44,7 @@ class WorkoutPage extends React.Component {
             isExerciseTimer={false}
           />
         </div>
-        <div className="exercise-card" data-testid="exercise-card">
+        <div className="exercise-card" aria-label="exercise-card">
           <WorkoutGenerator
             focus={focus}
             time={time}

@@ -114,7 +114,7 @@ class WorkoutGenerator extends React.Component {
           </h3>
         </div>
         <div className="bottom-row">
-          <div className="exercise-timer">
+          <div className="exercise-timer" aria-label="exercise-timer">
             <BaseTimer
               minutes={0}
               seconds={EXERCISE_DURATION}
