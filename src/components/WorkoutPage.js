@@ -14,16 +14,9 @@ class WorkoutPage extends React.Component {
     this.state = {
       exerciseMin: EXERCISE_MIN,
       exerciseSec: EXERCISE_DURATION,
-      startTime: startTime,
-      gifsrc: ""
+      startTime: startTime
     };
   }
-
-  // nextExerciseCallback = workoutGeneratorData => {
-  //   this.setState({
-  //     nextExercise: workoutGeneratorData
-  //   });
-  // };
 
   render() {
     const queries = new URLSearchParams(this.props.location.search);
