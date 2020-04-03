@@ -6,7 +6,7 @@ import WorkoutGenerator from "../functions/WorkoutGenerator.js";
 const SECONDS_IN_ONE_MINUTE = 60;
 const EXERCISE_DURATION = 30;
 const EXERCISE_MIN = 0;
-const startTime = Date.now();
+// const startTime = Date.now();
 
 class WorkoutPage extends React.Component {
   constructor(props) {
@@ -14,8 +14,17 @@ class WorkoutPage extends React.Component {
     this.state = {
       exerciseMin: EXERCISE_MIN,
       exerciseSec: EXERCISE_DURATION,
-      startTime: startTime
+      startTime: 0,
+      mounted: false,
     };
+  }
+
+  componentDidMount() {
+    console.log("setting time state");
+    this.setState({
+      startTime: Date.now(),
+      mounted: true
+    });
   }
 
   render() {
@@ -24,7 +33,9 @@ class WorkoutPage extends React.Component {
     const focus = queries.get("focus");
     const timeInMin = time / SECONDS_IN_ONE_MINUTE;
     const timeInSec = (time / SECONDS_IN_ONE_MINUTE) % timeInMin;
-
+    if (!this.state.mounted) {
+      return <div></div>;
+    }
     return (
       <div aria-label="workout-page">
         <div className="workout-page__nav-buttons">
@@ -47,8 +58,8 @@ class WorkoutPage extends React.Component {
         <div className="exercise-card" aria-label="exercise-card">
           <WorkoutGenerator
             focus={focus}
-            time={time}
-            duration={EXERCISE_DURATION}
+            time={900}
+            duration={30}
             startTime={this.state.startTime}
           />
         </div>

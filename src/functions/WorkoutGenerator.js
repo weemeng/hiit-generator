@@ -12,8 +12,8 @@ class WorkoutGenerator extends React.Component {
     super(props);
     this.state = {
       focus: this.props.focus,
-      time: this.props.time,
-      duration: this.props.duration,
+      time: 900, //this.props.time,
+      duration: 30, //this.props.duration,
       exerciseNames: [],
       gifNames: [],
       currentIndex: 0,
@@ -66,6 +66,10 @@ class WorkoutGenerator extends React.Component {
       }
     }
   };
+
+  determineTimeDelta = (desiredTime) => {
+    
+  }
 
   updateExerciseInterval = () => {
     return setInterval(() => {
